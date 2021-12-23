@@ -4,6 +4,7 @@ import guru.springframework.msscbrewery.services.BeerService;
 import guru.springframework.msscbrewery.services.v2.BeerServiceV2;
 import guru.springframework.msscbrewery.web.model.BeerDto;
 import guru.springframework.msscbrewery.web.model.v2.BeerDtoV2;
+import lombok.val;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,8 +39,8 @@ public class BeerControllerV2 {
 
     @PostMapping
     public ResponseEntity handlePost(@Valid @RequestBody BeerDtoV2 beerDto) {
-        BeerDtoV2 dto = beerService.saveNewBeer(beerDto);
-        HttpHeaders httpHeaders = new HttpHeaders();
+        val dto = beerService.saveNewBeer(beerDto);
+        val httpHeaders = new HttpHeaders();
         httpHeaders.add("Location", "/api/v1/customer/" + dto.getId().toString());
         return new ResponseEntity(httpHeaders, HttpStatus.CREATED);
     }
