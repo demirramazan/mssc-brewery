@@ -3,8 +3,8 @@ package guru.springframework.msscbrewery.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import guru.springframework.msscbrewery.services.CustomerService;
 import guru.springframework.msscbrewery.web.model.CustomerDto;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -39,7 +39,7 @@ public class CustomerControllerTest {
 
     private final static String CUSTOMER_API_URI = "/api/v1/customer/";
 
-    @Before
+    @BeforeEach
     public void setUp() {
         validCustomer = CustomerDto.builder().id(UUID.randomUUID())
                 .name("")
